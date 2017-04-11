@@ -48,13 +48,18 @@
     相对路径
     ./当前路径
     ../上级目录
-    node +文件路径的形式执行
-## 调试
-    每次修改代码保存后，我们都需要手动重启程序
-    使用 supervisor 可以解决这个繁琐的
-    npm install -g supervisor
-    运行supervisor --harmony index启动程序
-    supervisor 会监听当前目录下 node 和 js 后缀的文件，当这些文件发生改动时，supervisor 会自动重启程序。
+    1. node +文件路径的形式执行
+
+    2. 每次修改代码保存后，我们都需要手动重启程序
+        使用 supervisor 可以解决这个繁琐的
+        npm install -g supervisor
+        运行supervisor --harmony index启动程序
+        supervisor 会监听当前目录下 node 和 js 后缀的文件，当这些文件发生改动时，supervisor 会自动重启程序。
+    3. 在package.json中设置scripts
+        "scripts": {
+            "start": "node ./bin/www"
+        }
+       在这包的目录中打npm start命令
 ## module.exports 
     1. module.exports是全局的对象 可简写成exports
         node 帮我们实现了var exports=module.exports

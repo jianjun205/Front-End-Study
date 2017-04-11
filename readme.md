@@ -101,7 +101,7 @@
             4. 元素批量修改
 
     5. BFC 
-
+        待续
 ## html5 
     1. 什么是h5?
         狭义上:是html4的升级版本，是新一代web应用标准
@@ -312,6 +312,8 @@
         rem：的基准值  16px  默认的字体大小是16px
         r 是root  根元素的意思  html文档的根元素是  html标签
         基准值是相对于来根元素（html）来的
+    20. media 
+        
 ## less sass
     Front-End-Study/note/less-base.less
 ## js 
@@ -1087,26 +1089,19 @@
             </a>
             </div>
             ```
-
- 
-
-
-
-
-
-
-
-
-
-
 ## node
     Front-End-Study/node/README.md
+## seajs requirejs
+    待续
 ## 微信开发
     待续
 ## 正则表达式
     Front-End-Study/note/reg.md
 ## 常用的设计模式
-    待续
+    1. 工厂
+    2. 抽象工厂
+    3. 单例
+    4. 观察者
 ## tool 
     1. git/svn
         Front-End-Study/note/git.md
@@ -1181,6 +1176,10 @@
         先全局或者本地安装
         npm i -g eslint
         vscode 中 安装eslint 插件
+
+        terminal 中执行 eslint --init
+        vscode use ESlint:http://www.cnblogs.com/IPrograming/p/VsCodeESLint.html
+        
         配置：Front-End-Study/note/eslint.md
         参考 http://eslint.org/
 ## 常见的面试题
