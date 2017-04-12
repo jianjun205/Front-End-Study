@@ -1,7 +1,7 @@
 //引入相关css
-import '../../../mui/dist/css/mui.css';
-//在页面中需要使用<span标签 并制定类名
 
+//在页面中需要使用<span标签 并制定类名
+import '../css/test.css';
 import '../css/index.less'; //引入css文件
 import cal from './cal';
 

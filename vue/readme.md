@@ -1,14 +1,14 @@
 # vue study
-
-## 基础知识
-
-先看一个 todolist例子
-
-```javascript
+### 简单介绍
+> 尤雨溪毕业于上海复旦附中，在美国完成大学学业，本科毕业于Colgate University，后在Parsons设计学院获得Design & Technology艺术硕士学位，现任职于纽约Google Creative Lab。
+2014年2月，开源了一个前端开发库Vue.js。Vue.js 是构建 Web 界面的 JavaScript 库，是一个通过简洁的API提供高效的数据绑定和灵活的组件系统。
+2016年9月3日，在南京的JSConf上，Vue作者尤雨溪正式宣布加盟阿里巴巴Weex团队，尤雨溪称他将以技术顾问的身份加入 Weex 团队来做 Vue 和 Weex 的 JavaScript runtime 整合，目标是让大家能用 Vue 的语法跨三端
+## 基础语法
+ ```javascript
     html
     //要操作的对象
     <div id="app">
-    //绑定模型 按键事件
+     //绑定模型 按键事件
       <input v-model="newTodo" v-on:keyup.enter="addTodo">
       <ul>
         //循环
@@ -52,9 +52,8 @@
              }
          }
     })
-```
-
-- 双向绑定
+ ```
+ - 双向绑定
   数据（dom文本或结构）和视图同步变化
 
   ```javascript
@@ -84,7 +83,7 @@
             <div id="item-{{ id }}"></div>
     ```
 
-- 放在 Mustache 标签内的文本称为绑定表达式
+ - 放在 Mustache 标签内的文本称为绑定表达式
   （一段绑定表达式 由一个简单的 JavaScript 表达式和可选的一个或多个过滤器构成）
 
   ```javascript
@@ -98,7 +97,7 @@
     {{ if (ok) { return message } }}
   ```
 
-- 过滤器 (Filter)
+ - 过滤器 (Filter)
 
   ```javascript
     //将表达式 message 的值“管输（pipe）”到内置的 filterA过滤器。
@@ -108,7 +107,7 @@
     {{ message | filterA 'arg1' arg2 | filterB }}
   ```
 
-- 指令 (Directives)
+ - 指令 (Directives)
   是特殊的带有前缀 v- 的特性。指令的值限定为绑定表达式
 
   ```javascript
@@ -119,7 +118,7 @@
     <a v-on:click="doSomething"> // 缩写 <a @click="doSomething">
   ```
 
-- 修饰符 (Modifiers)
+ - 修饰符 (Modifiers)
   以半角句号 . 开始的特殊后缀，用于表示指令应当以特殊方式绑定
 
   ```javascript
@@ -127,7 +126,7 @@
     <a v-bind:href.literal="/a/b/c"></a>
   ```
 
-- 计算属性
+ - 计算属性
 
   - 计算属性默认是 getter
 

@@ -1,8 +1,8 @@
 {
   "name": "webpack-babel",
   "version": "1.0.0",
-  "description": "webpack-babel",
-  "main": "webpack.config.js",
+  "description": "webpack-test",
+  "main": "main.js",
   "dependencies": {},
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
@@ -21,8 +21,8 @@
     "webpack-html-plugin": "^0.1.1"
   },
   "scripts": {
-     "test": " ./node_modules/.bin/webpack-dev-server --inline --hot --open --port  9999"
+    "test": "webpack-dev-server --inline --hot --open --port  9999"
   },
-  "author": "",
+  "author": "mm",
   "license": "MIT"
 }
