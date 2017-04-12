@@ -1,5 +1,5 @@
 #  前端技术栈
-    以下是个人前端学习总结
+    以下是个人前端学习总纲
 ## html css
     1. 基本html标签
     2. css语法
@@ -1092,8 +1092,28 @@
 ## node
     Front-End-Study/node/README.md
 ## seajs requirejs
-    待续
-## 微信开发
+ * commonjs:使用js语法要求的后端语言的规范,模块化、后端语言需要具备的一些要求，可以http、操作文件。。。。
+     - require/module.exports
+     - 计算器案例： 
+         +  +-*/ -> cal.js
+         +  index.js 作为页面中动态操作主文件，使用cal.js内部的功能
+         +  index.html 引入顺序
+         +  两大问题: 文件依赖顺序、全局函数命名冲突
+ * 2009年，commonjs规范还未出来，此时前端开发人员编写的代码都是非模块化的，
+     - 那个时候开发人员经常需要十分留意文件加载顺序所带来的依赖问题
+ * 与此同时 nodejs开启了js全栈大门，而requirejs在国外也带动着前端逐步实现模块化
+     - 同时国内seajs也进行了大力推广
+     - AMD 异步模块定义 requirejs
+     - CMD seajs和nodejs非常相似
+         + commonjs包含模块定义，和CMD比较相似
+ * npm集中包管理的方式备受青睐，12年bower、browserify诞生
+     - browserify 最大的功能是为了让require的语法能够在浏览器中运行
+     - 并且有相关的一些插件可以结合使用 gulp、ES6语法转化
+     - 此时爆发大量前端工具 webpack也在其中，其是一款模块打包工具
+         - 压缩、合并、混淆 + 结合插件的代码转化 ，自动化一气呵成
+     、systemjs：万能模块打包工具、跟angular抱大腿，angular4用了
+ 
+ ## 微信开发
     待续
 ## 正则表达式
     Front-End-Study/note/reg.md
@@ -1103,62 +1123,16 @@
     3. 单例
     4. 观察者
 ## tool 
-    1. git/svn
+  1. git/svn
         Front-End-Study/note/git.md
-    2. bower/npm
+  2. bower/npm
         bower 前端的包管理器
         npm node 的包管理器
-    3. gulp
-        1. 什么是gulp？
-            gulpjs是一个前端构建工具，与gruntjs相比，gulpjs无需写一大堆繁杂的配置参数，简单，gulpjs使用的是nodejs中stream来读取和操作数据，速度更快。
-
-        2. install
-            首先确保你已经正确安装了nodejs环境。然后以全局方式安装gulp：
-            全局安装：
-                npm install -g gulp
-                国内使用淘宝镜像
-                npm install -g gulp --registry=https://registry.npm.taobao.org
-            本地安装：
-                建一个文件夹（工作目录）接下来的代码就在里面写
-                进入该目录，键入命令
-                npm install gulp (--save)   加save表示保存在本地 不写save也不影响 
-
-                如果想在安装的时候把gulp写进项目package.json文件的依赖中，则可以加上--save-dev：
-                npm install --save-dev gulp
-                淘宝镜像
-                npm install gulp --registry=https://registry.npm.taobao.org
-
-            gulp -v 查看是否成功
-
-        3. useage
-            1. 创建gulpfile.js 文件 
-                touch gulpfile.js    (bash 命令)   
-                gulpfil.js(名字必须这样命名)
-
-                node :var gulp = require(‘gulp’);
-
-            2. 创建任务呢
-                使用语法：
-                gulp.task(‘任务名’，function(){
-                    //要执行的任务
-                })
-                
-                eg:
-                Gulp.task(‘apptest’function(){
-                    Console.log(‘我是一个apptest的任务’)；
-                })
-            3. 执行gulp的任务
-                在工作目录下执行命令：gulp 任务名；例子的任务名是什么
-                gulp apptest
-
-                Using gulpfile 表示使用这样一个文件
-                Starting 表示开启这个任务
-                执行任务时打印这句话：我是一个appTest的任务
-                Finished 表示结束了这个任务
-
-            具体自动化构建查看： Front-End-Study/gulp
-
-    4. Emmet 语法
+  3. gulp
+        Project\Front-End-Study\build-tool\gulp
+  4. webpack 结合 babel 使用
+            Project/Front-End-Study/webpack-babel
+  5. Emmet 语法
         div.className
         div#idName
         div.className#idName
@@ -1166,9 +1140,9 @@
         a[href="#"]
         ul>li*3>a[href="#"]
 
-    5. ie注释语句
+  6. ie注释语句
         cc:ie6
-    6. eslint
+  7. eslint
         是nodejs编写，提供一种代码编写规范。
         1. 对代码静态分析，不用执行就可以查找不符合语法规则的代码。
         2. 可以自定义代码编写的规则
