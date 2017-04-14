@@ -49,6 +49,6 @@ module.exports = { //必须有的结构
             filename: 'index.html', //虚拟文件访问谁
             //配置了output中的path以后，就知道把文件生成到哪里去了
             template: './src/html/index.html'
-        })
+        })/**/
     ]
 }
