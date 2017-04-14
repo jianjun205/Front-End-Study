@@ -1,208 +1,138 @@
 # vue study
-### 简单介绍
-> 尤雨溪毕业于上海复旦附中，在美国完成大学学业，本科毕业于Colgate University，后在Parsons设计学院获得Design & Technology艺术硕士学位，现任职于纽约Google Creative Lab。
-2014年2月，开源了一个前端开发库Vue.js。Vue.js 是构建 Web 界面的 JavaScript 库，是一个通过简洁的API提供高效的数据绑定和灵活的组件系统。
-2016年9月3日，在南京的JSConf上，Vue作者尤雨溪正式宣布加盟阿里巴巴Weex团队，尤雨溪称他将以技术顾问的身份加入 Weex 团队来做 Vue 和 Weex 的 JavaScript runtime 整合，目标是让大家能用 Vue 的语法跨三端
-## 基础语法
- ```javascript
-    html
-    //要操作的对象
-    <div id="app">
-     //绑定模型 按键事件
-      <input v-model="newTodo" v-on:keyup.enter="addTodo">
-      <ul>
-        //循环
-        <li v-for="todo in todos">
-           //文本插值 
-          <span>{{ todo.text }}</span>
-          //  指令的值 为绑定表达式（参数）
-          <button v-on:click="removeTodo($index)">X</button>
-        </li>
-      </ul>
-    </div>
-    js
-    //创建vue
-    new Vue({
-        //创建对象        
-        el: '#app',
-        //属性赋值     
-        data: {
-            newTodo: '',
-            todos: [
-                { text: 'Add some todos' }
-            ]
-        },
-        //调用方法
-        methods: {
-            //方法一 添加todo
-            addTodo: function () {
-                //去掉空格
-                var text = this.newTodo.trim()
-                if (text) {
-                    //加入数组
-                    this.todos.push({ text: text })
-                    //置空
-                    this.newTodo = ''
+  开车
+## 前置知识
+  由于vue2 使用大量的es6语法;常见的如下
+  * import 注意事项
+    - 不能放在函数内部
+    - __import尽量都放在代码的上方，绝对不要放在函数体内部__
+    - 默认导出方式：
+        + export default xxx;
+            * import xxxx from './xxx.js';// 默认导出和导入名称可以不一样
+    - 按需加载
+        + export var fn = fn(){};  var xxx= 1;  export { xxx}
+        + import {fn,xxx} from './xxx.js';
+            * 接下来就可以直接使用fn 和xxx
+            * 以上方式注意，名称和写法{}一定要对应
+  * 函数简写
+      - var obj = { add:function(){ }  }
+      - var obj = { add(){}            }
+  * 对象属性的简写
+
+  ```javascript
+  var name = 'abc';
+
+  var person = {
+      name    //代表着person.name = 'abc'
+  }
+  ```
+## 解决闪烁问题
+ * v-text 将属性值赋给元素的innerText
+ * v-cloak 显示前移除该元素的隐藏样式
+ * 单文件方式中，不存在闪烁问题，在作为库使用(引包)存在闪烁问题
+     - 1:不给插值表达式{{}}，以属性的方式通知元素渲染
+         + `v-text="表达式或者是data中的对象" `
+    - 2:先隐藏该元素，再移除该元素样式
+        + 在元素上声明 v-cloak指令
+        + 同时制定style [v-cloak] { display:none;}
+## class结合v-bind使用
+ * 1：绑定单个class v-bind:class="三元表达式" `:class="isShow?'red':'green'"`
+ * 2：绑定多个class v-bind:class="对象"
+     - `:class="{'red':true,'big':true}"`
+ * 3:简写形式 是v-bind:class  等同于:class
+     - 不仅仅是class可以这样写，其他的任意属性都可以使用bind的方式获取内存中的对象，或者书写表 达式
+## v-for的使用
+ * 1:可以操作数组，能获取到的属性有value和index
+     - `v-for="(item,index) in heros"`
+ * 2:可以是一个对象，能获取到的属性有value,key,index
+     - `v-for="(item,key,index) in person "`
+ * 在使用的时候最好绑定一个:key="index" 等同于 v-bind:key="index"
+     - 给定一个唯一标示，为的是提高性能
+## 子组件使用
+ * 一个组件在使用子组件之前，需要声明
+     - components:{} 是一个对象，内部属性都是子组件
+ * 引入子组件:
+     - import xxxx from './xxx.vue';
+ * 使用该组件
+     - 组件名大写的，可以在template中转换成-小写
+ * 子组件也是组件，写法和其他组件一样的结构
+## 父向子组件传值
+ * 原理，就是通过属性来传递参数
+ * 常量、变量
+ * 常量：
+     - 直接通过属性传递 `msg="xxx"`
+     - 在子组件中声明,`props:['msg']`   {{msg}}来显示
+     - 在js逻辑代码中获取到该属性，通过当前VueComponent对象的实例属性$props.msg获取
+ * 变量
+     - 必须结合v-bind来使用，简写形式是`:msg="xxx(data中的属性|表达式)"`
+
+## 子向父组件传值（获取组件对象）(扩展)
+ * 使用方式和之前的一样，通过VueComponent实例对象的属性来完成
+     - $on /$ emit
+ * 在vue中 VueComponent实例对象可以自己先on,自己emit，来触发on
+     - 一定是同一个对象的on和emit是一对
+ * 关于 VueComponent实例对象属性:
+    - 发射`$emit('eventName',data);`
+    - 接受`$on('eventName',callback(data));`
+    - 只接受一次 `$once('eventName',callback(data));`
+    - 获取父组件`this.$parent`
+    - 获取子组件数组 `this.$children` 
+
+    $on $emit 实现原理
+        //同一个对象的on对应emit
+        function Person() {
+            this.task = {}; //保存所有的事件及回调
+        }
+        Person.prototype.on = function(event, callback) {
+            //保存起来
+            this.task[event] = callback;
+            /*
+                function(num) {
+                    alert('ak47射出了',num,'发子弹！砰砰砰');
                 }
-             },
-             //方法二 删除todo
-             removeTodo: function (index) {
-                //删除
-                 this.todos.splice(index, 1)
-             }
-         }
-    })
- ```
- - 双向绑定
-  数据（dom文本或结构）和视图同步变化
+            */
+        }
+        Person.prototype.emit = function(event, data) {
+            this.task[event](data); //调用之前传递的函数
+            // this.task[event] = null;//once发射以后。给null
+            /*
+                function(num) {
+                    alert('ak47射出了',num,'发子弹！砰砰砰');
+                }
+            */
+        }
+        var p1 = new Person();
+        p1.on('ak47', function(num) {
+            alert('ak47射出了' + num + '发子弹！砰砰砰');
+        });
+        p1.emit('ak47', 1223);
+## 过滤器
+ * 局部和全局过滤器
+ * vue2.0中没有默认提供过滤器，代码坑小、非全家桶(渐进式)
+ * 属性 `filters:{  key(过滤器名称):function(data){ return xxx;} }` 
+     - filters是固定的属性名
+         + key是我们自定义的过滤器名称
+         + data就是 {{text|过滤器}} 中的text
+         + return xxx; 是显示的样子
+ * 全局的声明方式
+     - `Vue.filter(过滤器名称字符串,function(data){   return xxxx;});`
+ * 注意实现: 如果存在全局和局部同名的过滤器时，优先以局部为准
 
-  ```javascript
-    var data = { a: 1 }
-    var vm = new Vue({
-      data: data
-    })
-    vm.a === data.a // -> true    
-    // 设置属性也会影响到原始数据
-    vm.a = 2
-    data.a // -> 2    
-    // ... 反之亦然
-    data.a = 3
-    vm.a // -> 3
-  ```
-
-  - 数据绑定最基础的形式是文本插值
-
-    ```javascript
-            <span>Message: {{ msg }}</span>  //2个Mustache 标签
-            <span>This will never change: {{* msg }}</span>  //*单次插值
-    ```
-
-  - HTML属性(Attributes) 插入（ Vue.js 指令和特殊特性内不能用插值）
-
-    ```javascript
-            <div id="item-{{ id }}"></div>
-    ```
-
- - 放在 Mustache 标签内的文本称为绑定表达式
-  （一段绑定表达式 由一个简单的 JavaScript 表达式和可选的一个或多个过滤器构成）
-
-  ```javascript
-    {{ number + 1 }}
-    {{ ok ? 'YES' : 'NO' }}
-    {{ message.split('').reverse().join('') }}
-    //一个限制是每个绑定只能包含单个表达式(坏栗如下，不能这么吃！！！)
-    <!-- 这是一个语句，不是一个表达式： -->
-    {{ var a = 1 }}
-    <!-- 流程控制也不可以，可改用三元表达式 -->
-    {{ if (ok) { return message } }}
-  ```
-
- - 过滤器 (Filter)
-
-  ```javascript
-    //将表达式 message 的值“管输（pipe）”到内置的 filterA过滤器。
-    //过滤器函数始终以表达式的值作为第一个参数。
-    //带引号的参数视为字符串，而不带引号的参数按表达式计算。
-    //字符串 'arg1' 将传给过滤器作为第二个参数，表达式 arg2 的值在计算出来之后作为第三个参数。
-    {{ message | filterA 'arg1' arg2 | filterB }}
-  ```
-
- - 指令 (Directives)
-  是特殊的带有前缀 v- 的特性。指令的值限定为绑定表达式
-
-  ```javascript
-    //v-if 指令将根据表达式 greeting 值的真假删除/插入 <p> 元素。
-    <p v-if="greeting">Hello!</p>
-    //有些指令可以在其名称后面带一个“参数” (Argument)，中间放一个冒号隔开
-    <a v-bind:href="url"></a> // 缩写 <a :href="url"></a>
-    <a v-on:click="doSomething"> // 缩写 <a @click="doSomething">
-  ```
-
- - 修饰符 (Modifiers)
-  以半角句号 . 开始的特殊后缀，用于表示指令应当以特殊方式绑定
-
-  ```javascript
-    //.literal 告诉指令 将它的值 解析为一个字面字符串 而不是一个表达式
-    <a v-bind:href.literal="/a/b/c"></a>
-  ```
-
- - 计算属性
-
-  - 计算属性默认是 getter
-
-    ```javascript
-     <div id="example">
-        a={{ a }}, b={{ b }}
-       </div>         
-    var vm = new Vue({
-    el: '#example',
-    data: {
-      a: 1
-    },
-    computed: {
-      // 一个计算属性的 getter
-      b: function () {
-        // `this` 指向 vm 实例
-        return this.a + 1
-      }
-    }
-    })
-
-      a=1,b=2   
-      console.log(vm.b) // -> 2
-      vm.a = 2
-      console.log(vm.b) // -> 3
-    ```
-
-  - $watch（用于观察 Vue 实例上的数据变动）
-
-    ```javascript
-    <div id="demo">{{fullName}}</div>
-     var vm = new Vue({
-      data: {
-      firstName: 'Foo',
-      lastName: 'Bar',
-      fullName: 'Foo Bar'
-      }
-    })    
-    vm.$watch('firstName', function (val) {
-    this.fullName = val + ' ' + this.lastName
-    })    
-    vm.$watch('lastName', function (val) {
-    this.fullName = this.firstName + ' ' + val
-    })
-    //当一些数据需要根据其它数据变化时,通常更好的办法是使用计算属性 而不是一个命令式的 $watch 回调。
-    //最优解
-    var vm = new Vue({
-    data: {
-      firstName: 'Foo',
-      lastName: 'Bar'
-    },
-    computed: {
-      fullName: function () {
-        return this.firstName + ' ' + this.lastName
-      }
-    }
-    })
-    ```
-
-  - 计算属性setter
-
-    ```javascript
-    // ...
-    computed: {
-    fullName: {
-      // getter
-      get: function () {
-        return this.firstName + ' ' + this.lastName
-      },
-      // setter
-      set: function (newValue) {
-        var names = newValue.split(' ')
-        this.firstName = names[0]
-        this.lastName = names[names.length - 1]
-      }
-    }
-    }
-    // 现在在调用 vm.fullName = 'John Doe' 时,setter 会被调用，vm.firstName 和 vm.lastName 也会有相应更新。
-    ```
+## vue-router
+* 概念
+    - 路由:前端路由、后端路由（url+请求方式的判断和分发)
+        + 前端路由:锚点值，根据锚点值来做不同处理的分发，页面的显示
+    use    
+    - 1：下载、
+    - 2:安装插件、
+        + `Vue.use(VueRouter);`
+    - 3:构建路由对象
+        + `let router = new VueRouter();`
+    - 4、配置路由规则
+        + `router.addRouters([{name:'',path:'/',component:组件对象},{}])`
+            * name不是必须的，path是必须的。严格匹配路径
+            * __在router-view中，匹配上就显示对应的组件__
+    - 5:传递options对象new Vue的时候
+        + new Vue({ router:router});
+    - 6:配置<router-view> 作为显示
+* router-link的使用
+    - `<router-link to="/login">点我</router-view>`

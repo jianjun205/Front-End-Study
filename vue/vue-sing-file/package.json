@@ -4,7 +4,9 @@
   "description": "vue-test",
   "main": "main.js",
   "dependencies": {
-    "vue": "^2.2.6"
+    "vue": "^2.2.6",
+    "vue-route": "^1.5.1",
+    "vue-router": "^2.4.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",

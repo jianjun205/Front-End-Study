@@ -2483,6 +2483,12 @@ osenv@^0.1.4:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
+page@^1.5.0:
+  version "1.7.1"
+  resolved "http://registry.npm.taobao.org/page/download/page-1.7.1.tgz#3886c147b895487783759b37e800a11213bc38ed"
+  dependencies:
+    path-to-regexp "~1.2.1"
+
 pako@~0.2.0:
   version "0.2.9"
   resolved "http://r.cnpmjs.org/pako/download/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
@@ -2539,6 +2545,12 @@ path-is-absolute@^1.0.0:
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "http://r.cnpmjs.org/path-to-regexp/download/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
+
+path-to-regexp@~1.2.1:
+  version "1.2.1"
+  resolved "http://registry.npm.taobao.org/path-to-regexp/download/path-to-regexp-1.2.1.tgz#b33705c140234d873c8721c7b9fd8b541ed3aff9"
+  dependencies:
+    isarray "0.0.1"
 
 path-type@^1.0.0:
   version "1.1.0"
@@ -3676,6 +3688,16 @@ vue-loader@^11.3.4:
     vue-hot-reload-api "^2.0.11"
     vue-style-loader "^2.0.0"
     vue-template-es2015-compiler "^1.2.2"
+
+vue-route@^1.5.1:
+  version "1.5.1"
+  resolved "http://registry.npm.taobao.org/vue-route/download/vue-route-1.5.1.tgz#d64d13f20988438936f60d3d2bf187ca448ad7d3"
+  dependencies:
+    page "^1.5.0"
+
+vue-router@^2.4.0:
+  version "2.4.0"
+  resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-2.4.0.tgz#56a635e1434a1966ac095f2a485bebdcfc36cec5"
 
 vue-style-loader@^2.0.0:
   version "2.0.5"
