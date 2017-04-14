@@ -5,7 +5,7 @@ module.exports = { //必须有的结构
     //指定入口文件
     entry: {
         // file1:'./a.js' 可以指定多个入口
-        main: './src/js/main.js', //只针对一个入口的情况
+        main: './main.js', //只针对一个入口的情况
     },
     //指定出口文件
     output: {
@@ -41,13 +41,15 @@ module.exports = { //必须有的结构
 
             }
 
+        },{
+
         }]
     },
     plugins: [ //每一个插件都是一个对象
         //新创建一个webpackHtmlPlugin对象
-        new webpackHtmlPlugin({           
+        new webpackHtmlPlugin({
             //配置了output中的path以后，就知道把文件生成到哪里去了
-            template: './src/html/index.html'
+            template: './index.html'
         })/**/
     ]
 }
