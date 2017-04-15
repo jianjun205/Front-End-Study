@@ -974,7 +974,7 @@
             Front-End-Study/angular1
         angular 2
     2. vue
-        Front-End-Study/vue2
+        Front-End-Study/vue
     3. bootstrap
         bootstrap常用样式
         3.1 container类   

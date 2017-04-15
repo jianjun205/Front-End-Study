@@ -118,7 +118,7 @@
  * 注意实现: 如果存在全局和局部同名的过滤器时，优先以局部为准
 
 ## vue-router
-* 概念
+ * 概念
     - 路由:前端路由、后端路由（url+请求方式的判断和分发)
         + 前端路由:锚点值，根据锚点值来做不同处理的分发，页面的显示
     use    
@@ -134,5 +134,45 @@
     - 5:传递options对象new Vue的时候
         + new Vue({ router:router});
     - 6:配置<router-view> 作为显示
-* router-link的使用
+ * router-link的使用
     - `<router-link to="/login">点我</router-view>`
+## vue-router参数传递和接收
+ * 1：给定router-link设置
+     - `<router-link :to="'/music/show/'  +item.id ">{{item.name}}</router-link>`
+ * 2: 设置通配符路由规则
+     - `{ path: '/music/show/:id',  component: MusicDetail }`
+ * 3：通过route对象获取路由参数
+     - `this.$route.params` 
+         + __注意:路由规则中通配符配置是什么名称，后续params对象就用什么名称做key取值__
+  * router对象
+  * route对象
+  * 总结:通过url中的参数可以有两种方式获取：    
+      - params、query   
+        + params:
+            * link-> `:to="'/xxx/' + item.id"`  
+            * 路由规则配置 `/xxx/:id `  
+            * 代码中获取 `this.$route.params.id`
+        + query: (查询字符串)
+            * link -> `:to="'/xxx?id=' + item.id"`
+            * 路由规则 `/xxx`
+            * 代码中获取 `this.$route.query.id;`
+## vue-resource(下载、Vue安装)
+ * JSONP
+     - callback=xxxxx      不能是json对象   必须是字 符串 xxxxx('data')
+     - dataType='jsonp' -> {name:'xxx'}
+     - jsonp也需要服务器做对应的配合，返回调用该回调函 数并传递数据的字符串
+ * https://github.com/pagekit/vue-resource
+ * 拦截器思想
+     - 以前是后端用来处理请求过滤请求的操作
+     - 现在前端有了该思想，和事件、钩子函数类似
+     - 我们可以在请求发起以前做一些公共的事物，比如添加 某些头信息
+     - 也可以在请求发起后，响应回来前，操作数据，比如修 改响应的内容..
+ * promise对象的使用
+     - 遵循Promise使用规则
+         + 如果你看到一个函数返回是的Promise对象，那么 不代表其就是数据
+         + 而是需要通过 return 该对象，接下来再使用then
+        + then中有回调函数(第一个是成功，第二个是失败,各自参数是数据)，参数就是返回值
+## get和post请求总结
+ * get请求可以减少到只给一个url参数，then是一个函数,第一个参数是成功后的回调，第二个参数是失败后的回调
+ * post请求 至少3个参数 post(url,dataObj,optionsObj)
+    - 如果发送post请求，键值对形式必须加上 optionsObj：{emulateJSON:true}

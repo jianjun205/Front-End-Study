@@ -197,19 +197,19 @@
  * http://dev.dcloud.net.cn/mui/
 
 #### 生成html文件插件
- * webpack-html-plugin
+ * html-webpack-plugin
  * 安装这个插件,这个插件依赖于webpack
      - webpack -> 在任意命令行使用webpack命令
      - 如果在js文件中，存在webpack对象的话，是不是必须让其作为项目的依赖
      - __该插件依赖于webpack__
  
  * 操作步骤:
-     - 1：安装webpack和webpack-html-plugin插件
+     - 1：安装webpack和html-webpack-plugin插件
          + 在webpack.config.js文件中进行配置
  
  ```javascript
  三大属性:entry、output、module
- const webpackHtmlPlugin = require('webpack-html-plugin');
+ const webpackHtmlPlugin = require('html-webpack-plugin');
  plugins:[
      new webpackHtmlPlugin({
             filename:'index.html',//生成的文件名

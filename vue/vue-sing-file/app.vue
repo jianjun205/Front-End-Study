@@ -43,6 +43,10 @@ export default {
             this.$on('receiveMsg', function (msg) {
                 alert('这是子组件触发父层事件，传入的参数：' + msg)
             })
+            // 如果只要子组件触发一次 用once 绑定
+            // this.$once('receiveMsg', function (msg) {
+            //     alert('这是子组件触发父层事件，传入的参数：' + msg)
+            // })
         }
     },
     filters: {

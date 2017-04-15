@@ -29,7 +29,9 @@ export default {
             console.log(this.$parent.text + this.$parent.msg);
         },
         sendMsg() {
-            this.$parent.$emit('receiveMsg', '我是子组件发来的数据')
+            this.$parent.$emit('receiveMsg', '我是子组件发来的数据');
+            //若只触发一次
+            // this.$parent.$off('receiveMsg');
         }
     }
 
