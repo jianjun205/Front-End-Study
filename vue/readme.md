@@ -176,3 +176,11 @@
  * get请求可以减少到只给一个url参数，then是一个函数,第一个参数是成功后的回调，第二个参数是失败后的回调
  * post请求 至少3个参数 post(url,dataObj,optionsObj)
     - 如果发送post请求，键值对形式必须加上 optionsObj：{emulateJSON:true}
+## vuex
+ 1. install&useage
+     npm install vuex --save
+     import Vuex from 'vuex'
+     Vue.use(Vuex)
+ 2. what？
+    Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式
+    问题：传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力引出vuex

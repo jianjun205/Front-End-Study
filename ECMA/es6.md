@@ -508,17 +508,86 @@
         注意this指向
 ## 对象的扩展
     1. 属性的简洁表示法
-    
+        var foo = 'bar';
+        var baz = {foo};
+        // 等同于
+        var baz = {foo: foo};
+
+        function f(x, y) {
+            return {x, y};
+        }
+        f(1, 2) // Object {x: 1, y: 2}
+
+        //方法的简写
+        var o = {
+        method() {
+            return "Hello!";
+          }
+        };
+
+        // 等同于
+        var o = {
+        method: function() {
+            return "Hello!";
+         }
+        };
+
+        //CommonJS模块输出变量
+        module.exports = { getItem, setItem, clear };
+        // 等同于
+        module.exports = {
+            getItem: getItem,
+            setItem: setItem,
+            clear: clear
+        };
+        
     2. 属性名表达式
+        let obj = {
+            ['h' + 'ello']() {
+                return 'hi';
+            }
+        };
+        obj.hello() // hi
     3. 方法的 name 属性
     4. Object.is()
+        与严格比较运算符（===）的行为基本一致。
     5. Object.assign()
+        var target = { a: 1, b: 1 };
+
+        var source1 = { b: 2, c: 2 };
+        var source2 = { c: 3 };
+
+        Object.assign(target, source1, source2);
+        target // {a:1, b:2, c:3}
     6. 属性的可枚举性
+        Object.assign()，会忽略enumerable为false的属性，只拷贝对象自身的可枚举的属性。
     7. 属性的遍历
+        Object.keys(obj)
+        Object.getOwnPropertyNames(obj)
+        Object.getOwnPropertySymbols(obj)
+        Reflect.ownKeys(obj)
     8.  __proto__属性，Object.setPrototypeOf()，Object.getPrototypeOf()
     9. Object.keys()，Object.values()，Object.entries()
     10. 对象的扩展运算符
     11. Object.getOwnPropertyDescriptors()
     12. Null 传导运算符
+## Proxy
+## Promise
+  1. what?
+        Promise 是异步编程的一种解决方案
+        从语法上说，Promise 是一个对象
+        Promise对象代表一个异步操作
+        ES6规定，Promise对象是一个构造函数，用来生成Promise实例。
+  2. 有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和Rejected（已失败）
+
+    var promise = new Promise(function(resolve, reject) {
+     // ... some code
+
+     if (/* 异步操作成功 */){
+         resolve(value);
+     } else {
+         reject(error);
+     }
+     });
 ## 参考 
     阮一峰的es6入门
