@@ -188,3 +188,40 @@
  2. what？
     Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式
     问题：传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力引出vuex
+ 3. 应用场景：
+  - vuex适合更为大型，数据操作频繁，业务复杂的程序
+  * vuex是帮助我们把数据保存在全局的内存中，绝对不是数据的序列化、持久化
+    State 状态(数据)
+    Getters (获取)
+    Mutations (发生改变，实际数据的操作)
+    Actions (行为)
+    Modules (模块)
+ 4. vuex优雅的提交改变
+  * mutatiions中如果出现同名的mutation就会后面的覆盖前面的
+  * mutation必须在同步中
+  * 我们通过调用$store.commit(mutation的名字);就能触发数据的改变
+
+ 5. 优雅的获取数据getters
+    * 默认我们可以通过this.$store.state.属性名获取数据的，也能修改数据
+        - 但是，这样不好，修改数据建议要使用mutations的方式修改
+        - 获取数据建议使用getters.函数名的方式获取
+            + getters其实就相当于computed，内部涉及到的数据，如果没有发生改变
+                * 该函数不会反复触发，而是从缓存中获取原值
+                * getters通常在开发中结合computed使用
+ 6. vuex异步提交变更
+    * 1:声明一个actions中的一个属性 属性名就是action的名称
+    * 2:接受{commit} ，并且调用commit(改变的名称(mutation));触发该Mutation的执行
+    * 3:this.$store.dispatch('action的名称');
+
+## 单向数据绑定 v->M
+* 给元素添加输入事件，如果键盘按下，将值赋给M(内存中的对象)
+
+## 利用setter数据劫持  M ->V
+* setter会在该属性被赋值的时候触发
+
+## 简单双向数据绑定
+* vue: compile编译模板 observe(观察对象(setter/getter)) Watcher(观察者)
+
+## 简单订阅-发布
+
+## 模拟vue实现思路
