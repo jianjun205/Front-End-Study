@@ -55,56 +55,60 @@
  * 使用该组件
      - 组件名大写的，可以在template中转换成-小写
  * 子组件也是组件，写法和其他组件一样的结构
-## 父向子组件传值
- * 原理，就是通过属性来传递参数
- * 常量、变量
- * 常量：
-     - 直接通过属性传递 `msg="xxx"`
-     - 在子组件中声明,`props:['msg']`   {{msg}}来显示
-     - 在js逻辑代码中获取到该属性，通过当前VueComponent对象的实例属性$props.msg获取
- * 变量
-     - 必须结合v-bind来使用，简写形式是`:msg="xxx(data中的属性|表达式)"`
 
-## 子向父组件传值（获取组件对象）(扩展)
- * 使用方式和之前的一样，通过VueComponent实例对象的属性来完成
-     - $on /$ emit
- * 在vue中 VueComponent实例对象可以自己先on,自己emit，来触发on
-     - 一定是同一个对象的on和emit是一对
- * 关于 VueComponent实例对象属性:
-    - 发射`$emit('eventName',data);`
-    - 接受`$on('eventName',callback(data));`
-    - 只接受一次 `$once('eventName',callback(data));`
-    - 获取父组件`this.$parent`
-    - 获取子组件数组 `this.$children` 
+## 组件通讯
+   1. 父向子组件传值
+       * 原理，就是通过属性来传递参数
+       * 常量、变量
+       * 常量：
+           - 直接通过属性传递 `msg="xxx"`
+           - 在子组件中声明,`props:['msg']`   {{msg}}来显示
+           - 在js逻辑代码中获取到该属性，通过当前VueComponent对象的实例属性$props.msg获取
+       * 变量
+           - 必须结合v-bind来使用，简写形式是`:msg="xxx(data中的属性|表达式)"`
 
-    $on $emit 实现原理
-        //同一个对象的on对应emit
-        function Person() {
-            this.task = {}; //保存所有的事件及回调
-        }
-        Person.prototype.on = function(event, callback) {
-            //保存起来
-            this.task[event] = callback;
-            /*
-                function(num) {
-                    alert('ak47射出了',num,'发子弹！砰砰砰');
-                }
-            */
-        }
-        Person.prototype.emit = function(event, data) {
-            this.task[event](data); //调用之前传递的函数
-            // this.task[event] = null;//once发射以后。给null
-            /*
-                function(num) {
-                    alert('ak47射出了',num,'发子弹！砰砰砰');
-                }
-            */
-        }
-        var p1 = new Person();
-        p1.on('ak47', function(num) {
-            alert('ak47射出了' + num + '发子弹！砰砰砰');
-        });
-        p1.emit('ak47', 1223);
+   2. 子向父组件传值（获取组件对象）(扩展)
+        * 使用方式和之前的一样，通过VueComponent实例对象的属性来完成
+            - $on /$ emit
+        * 在vue中 VueComponent实例对象可以自己先on,自己emit，来触发on
+            - 一定是同一个对象的on和emit是一对
+        * 关于 VueComponent实例对象属性:
+            - 发射`$emit('eventName',data);`
+            - 接受`$on('eventName',callback(data));`
+            - 只接受一次 `$once('eventName',callback(data));`
+            - 获取父组件`this.$parent`
+            - 获取子组件数组 `this.$children` 
+
+        * $on $emit 实现原理
+              //同一个对象的on对应emit
+             function Person() {
+                 this.task = {}; //保存所有的事件及回调
+             }
+             Person.prototype.on = function(event, callback) {
+                 //保存起来
+                 this.task[event] = callback;
+                 /*
+                     function(num) {
+                         alert('ak47射出了',num,'发子弹！砰砰砰');
+                     }
+                 */
+             }
+             Person.prototype.emit = function(event, data) {
+                 this.task[event](data); //调用之前传递的函数
+                 // this.task[event] = null;//once发射以后。给null
+                 /*
+                     function(num) {
+                         alert('ak47射出了',num,'发子弹！砰砰砰');
+                     }
+                 */
+             }
+             var p1 = new Person();
+             p1.on('ak47', function(num) {
+                 alert('ak47射出了' + num + '发子弹！砰砰砰');
+             });
+             p1.emit('ak47', 1223);
+    3. 兄弟组件通讯
+        待续
 ## 过滤器
  * 局部和全局过滤器
  * vue2.0中没有默认提供过滤器，代码坑小、非全家桶(渐进式)

@@ -505,7 +505,7 @@
 
         var sum = (num1, num2) => { return num1 + num2; }
 
-        注意this指向
+        注意this指向 不需要在函数外捕获this
 ## 对象的扩展
     1. 属性的简洁表示法
         var foo = 'bar';

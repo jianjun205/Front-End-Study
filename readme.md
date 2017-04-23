@@ -102,6 +102,8 @@
 
     5. BFC 
         待续
+    6. css hack
+        
 ## html5 
     1. 什么是h5?
         狭义上:是html4的升级版本，是新一代web应用标准
@@ -505,6 +507,8 @@
         20. == ===转换问题
             ==：如果操作数为对象，则转换成基本类型。优先使用valueOf() 失败的话则用toString()
             ===:类型和值都相等
+        21. dom 的操作
+            appendChild removeChild replaceChild insertBefore
     2. js-oop
         1. 对象：
             1. 什么是对象？
@@ -664,10 +668,10 @@
                 如果函数正在执行或还没有执行完毕，内部定义的数据都是不可回收的，不论引用计数是否为0。
                 引用计数的缺陷：容易产生循环引用，导致变量无法被GC回收。
             2. 标记清除法
-                        从文档的根节点（window对象）出发，找到至少一条路径可以到达该变量，那么该变量被标记为 “不可回收”；否则，该变量标记为 “可回收”。
-                        当GC对象寻访到该变量，如果被标记为 “可回收”，那么，就会立即回收掉其所占用的内存。
+              从文档的根节点（window对象）出发，找到至少一条路径可以到达该变量，那么该变量被标记为 “不可回收”；否则，该变量标记为 “可回收”。
+              当GC对象寻访到该变量，如果被标记为 “可回收”，那么，就会立即回收掉其所占用的内存。
 
-                        标记清除法的缺陷：性能比较低。
+              标记清除法的缺陷：性能比较低。
 
             3. 当代浏览器，同时使用两种机制。优先使用引用计数法，在相隔一定周期后使用标记清除法来释放变量的内存空间。
             4. 区别与联系
@@ -706,7 +710,7 @@
                 2. 通过对象：<object>.__proto__ ，__proto__  是浏览器中的，是一个非标准属性；
             5. 原型链：
                 原型的本质是对象，那么就具有__proto__的属性，所以原型对象也有原型。通过这个属性一层层找下去，就是当前对象的原型链。    
-                原型链的尽头 Object.prototype 所以js 实现继承就靠原型链
+                原型链的尽头 Object.prototype 所以js实现继承就靠原型链
             6. 对象的属性搜索原则：
                 首先找自己，若找到，停止搜索直接使用，否则一层层往原型上找，找到，停止搜索，直接使用，一直到
                 Object.prototype上 如果找到 就返回该属性的值，如果依然没有找到，就返回undefined。
@@ -975,7 +979,9 @@
         angular 2
     2. vue
         Front-End-Study/vue
-    3. bootstrap
+    3. react
+        Front-End-Study/React/readme.md
+    4. bootstrap
         bootstrap常用样式
         3.1 container类   
             用于定义一个固定宽度且居中的版心    
@@ -1112,9 +1118,12 @@
      - 此时爆发大量前端工具 webpack也在其中，其是一款模块打包工具
          - 压缩、合并、混淆 + 结合插件的代码转化 ，自动化一气呵成
      、systemjs：万能模块打包工具、跟angular抱大腿，angular4用了
- 
- ## 微信开发
+## Hybrid App
+    Front-End-Study/Hybrid-App
+## 微信开发
     待续
+## node proxy 
+  Front-End-Study/proxy
 ## 正则表达式
     Front-End-Study/note/reg.md
 ## 常用的设计模式
@@ -1125,11 +1134,12 @@
 ## tool 
   1. git/svn
         Front-End-Study/note/git.md
-  2. bower/npm
+  2. bower/npm/yarn
         bower 前端的包管理器
         npm node 的包管理器
+        yarn add 类似npm
   3. gulp
-        Project\Front-End-Study\build-tool\gulp
+        Front-End-Study/build-tool/gulp
   4. webpack 结合 babel 使用
             Project/Front-End-Study/webpack-babel
   5. Emmet 语法

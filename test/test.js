@@ -43,5 +43,22 @@ function sort(arr) {
 // function name(x,y){
 //     console.log(x+y)
 // }
-var name=(x,y)=>x+y;
-console.log(name(1,2))
+// var name=(x,y)=>x+y;
+// console.log(name(1,2))
+
+// var str = "123456";
+// console.log(str.split("").reverse().join(""))
+
+// console.log([...str].reverse().join(""));
+
+var arr =[{id:2,name:"wokao"},{id:6,name:"sb"}]
+// let str
+// var ids=[]
+// arr.forEach((item)=>{
+//     ids.push(item.id)
+// })
+// console.log(str=ids.join(","))
+arr.splice(0,1)
+console.log(arr)
+
+
