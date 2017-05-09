@@ -1,4 +1,4 @@
-1,Meta基础知识
+1, Meta基础知识
     H5页面窗口自动调整到设备宽度，并禁止用户缩放页面
     一、HTML页面结构（快捷键生成）meta:vp
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
@@ -90,7 +90,7 @@
             <meta name="googlebot" content="index,follow" />
             <meta name="verify" content="index,follow" />
 
-2,移动端字体相关
+2, 移动端字体相关
     1)移动端如何定义字体font-family
         iOS 系统
             默认中文字体是Heiti SC
@@ -174,7 +174,7 @@
                 }
             二， 对于只需要适配手机设备，使用px即可
             
-3,电话、短信、邮件
+3, 电话、短信、邮件
      一、打电话
     <a href="tel:0755-10086">打电话给:0755-10086</a>
 
@@ -307,12 +307,12 @@
     zepto的touch模块，tap事件也是为了解决在click的延迟问题
     通过绑定ontouchstart事件，加快对事件的响应。
 
-9,禁止文本缩放
+9, 禁止文本缩放
     当移动设备横竖屏切换时，文本的大小会重新计算，进行相应的缩放，当我们不需要这种情况时，可以选择禁止：
     html {
     　　   -webkit-text-size-adjust: 100%;
     }
-10,快速回弹滚动
+10, 快速回弹滚动
     在iOS上如果你想让一个元素拥有像 Native 的滚动效果，你可以这样做：
      .xxx {
         overflow: auto; /* auto | scroll */
@@ -322,16 +322,16 @@
     这里推荐另外一个 iDangero Swiper，
     iDangero官方地址： :www.idangero.us/swiper/#.VX_t9PmEB8Y
 
-11,移动端禁止选中内容
+11, 移动端禁止选中内容
     .user-select-none {
     -webkit-user-select: none;  /* Chrome all / Safari all */
     -moz-user-select: none;     /* Firefox all （移动端不需要） */
     -ms-user-select: none;      /* IE 10+ */      
     }
-12,如何禁止保存或拷贝图像（IOS）
+12, 如何禁止保存或拷贝图像（IOS）
     img { -webkit-touch-callout: none; }
 
-13,去掉webkit的滚动条
+13, 去掉webkit的滚动条
     ——display: none;
     其他参数
     ::-webkit-scrollba //滚动条整体部分
@@ -345,12 +345,12 @@
 14, android上去掉语音输入按钮
         input::-webkit-input-speech-button {display: none}
 
-15,手机拍照和上传图片
+15, 手机拍照和上传图片
         IOS有拍照、录像、选取本地图片功能，部分Android只有选择本地图片功能。
         <input type="file" accept="images/*" />
         <input type="file" accept="video/*" />
 
-16,屏幕旋转的事件和样式
+16, 屏幕旋转的事件和样式
     JS处理
         function orientInit(){
             var orientChk = document.documentElement.clientWidth > document.documentElement.clientHeight?'landscape':'portrait';
@@ -381,7 +381,7 @@
             }
         }
 
-17,audio元素和video元素在ios和andriod中无法自动播放
+17, audio元素和video元素在ios和andriod中无法自动播放
     音频，写法一
         <audio src="music/bg.mp3" autoplay loop controls>你的浏览器还不支持哦</audio>
     音频，写法二
@@ -404,7 +404,7 @@
     1.audio元素的autoplay属性在IOS及Android上无法使用，在PC端正常
     2.audio元素没有设置controls时，在IOS及Android会占据空间大小，而在PC端Chrome是不会占据任何空间
 
-18,重力感应事件
+18, 重力感应事件
         运用HTML5的deviceMotion，调用重力感应事件
         if(window.DeviceMotionEvent){
             document.addEventListener('devicemotion', deviceMotionHandler, false)
@@ -430,7 +430,7 @@
             //do something
         }
 
-19,用户调整字体大小后页面矬了，怎么阻止用户调整?
+19, 用户调整字体大小后页面矬了，怎么阻止用户调整?
     以下代码可使Android机页面不再受用户字体缩放强制改变大小，但是会有1S左右延时，期间可以考虑loading来处理
         if (typeof(WeixinJSBridge) == "undefined") {
             document.addEventListener("WeixinJSBridgeReady", function (e) {
@@ -451,7 +451,7 @@
     IOS下可使用 -webkit-text-size-adjust禁止用户调整字体大小
         body { -webkit-text-size-adjust:100%!important; }
 
-20,定位的坑
+20, 定位的坑
     fixed定位:
         1.ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位
         2.android下fixed表现要比iOS更好，软键盘弹出时，不会影响fixed元素定位
@@ -484,7 +484,7 @@
             })
         }
 
-21,播放视频不全屏
+21, 播放视频不全屏
     1.ios7+支持自动播放
     2.支持Airplay的设备（如：音箱、Apple TV)播放
         x-webkit-airplay="true" 
@@ -506,7 +506,7 @@
             deviceType();
         })
 
-23,JS判断微信浏览器
+23, JS判断微信浏览器
     function isWeixin(){
         var ua = navigator.userAgent.toLowerCase();
         if(ua.match(/MicroMessenger/i)=='micromessenger'){
@@ -525,7 +525,7 @@
         -ms-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0);
     }
-25,渲染优化
+25, 渲染优化
     1.禁止使用iframe（阻塞父文档onload事件）
     2.禁止使用gif图片实现loading效果（降低CPU消耗，提升渲染性能）
     3,使用CSS3代码代替JS动画；

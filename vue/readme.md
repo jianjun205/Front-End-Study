@@ -222,6 +222,12 @@
 ## 简单双向数据绑定
 * vue: compile编译模板 observe(观察对象(setter/getter)) Watcher(观察者)
 
-## 简单订阅-发布
-
-## 模拟vue实现思路
+## vue-cli
+# 全局安装 vue-cli
+$ npm install --global vue-cli
+# 创建一个基于 webpack 模板的新项目
+$ vue init webpack my-project
+# 安装依赖，走你
+$ cd my-project
+$ npm install
+$ npm run dev

@@ -20,5 +20,6 @@
         var topVal=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop
         var leftVal=window.pageYOffset||document.documentElement.scrollLeft||document.body.scrollLeft
     }
-    clientHeight (内部空间的高度 )和 clientWidth（元素内部的真实宽度）
+    clientHeight (内部空间的高度 )
+    clientWidth（元素内部的真实宽度）
 ```

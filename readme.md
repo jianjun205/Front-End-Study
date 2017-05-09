@@ -156,7 +156,7 @@
             E[attrxxxx]+E   选择当前的元素 然后找到相邻的下一个元素
             E[attrxxxx]~E   选择当前的元素 然后后面所有的元素
 
-    2.  伪元素：
+    2. 伪元素：
         ：before ：after
         推荐单冒号兼容性好
 
@@ -300,15 +300,31 @@
             flex-wrap  nowrap(不换行) wrap(换行) 默认不换
 
             设置换行后的排列方式
-                align-content  flex-start(起始点对齐)  flex-end(终止点对齐) center(居中对齐)  space-between(两端对齐)  space-around(空间环绕)
+                align-content ：
+                flex-start(起始点对齐)  
+                flex-end(终止点对齐) 
+                center(居中对齐)  
+                space-between(两端对齐)  
+                space-around(空间环绕)
+
             设置不换行的排列方式 
-                align-items(侧轴对齐)    flex-start(起始点对齐)  flex-end(终止点对齐) center(居中对齐) stretch(拉伸)
+                align-items(侧轴对齐) 
+                flex-start(起始点对齐)
+                flex-end(终止点对齐)
+                center(居中对齐) 
+                stretch(拉伸)
 
             伸缩项目 
                 1.伸缩项目在伸缩容器中所占的空间
                     flex:伸缩项目在伸缩容器剩余空间的比例
+                    css3中关于"flex:1"的"占满"布局的分析 ？
+                        1、子元素之间的等比例空间分配；
+                        2、子元素所占剩余空间分配；
                 2.自己排列自己的对齐方式
-                    align-self: flex-start(起始点对齐)  flex-end(终止点对齐) center(居中对齐) 
+                    align-self:
+                    flex-start(起始点对齐) 
+                    flex-end(终止点对齐) 
+                    center(居中对齐) 
                 3.定义自己的排列顺序
                     order  值越小，越靠前
     19. em rem:
@@ -319,7 +335,7 @@
     20. media 
         
 ## less sass
-    Front-End-Study/note/less-base.less
+    Front-End-Study/less
 ## js 
     1. ECMA+Dom+Bom  
         1. undefined,NaN，Null,infinity
