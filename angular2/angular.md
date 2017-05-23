@@ -18,4 +18,7 @@
     开启成功之后
     在浏览器中打开http://localhost:4200/
     显示 app works!
+    
+    ng serve --open
+    使用--open（或-o）参数可以自动打开浏览器并访问http://localhost:4200/。
 ### 编辑该应用

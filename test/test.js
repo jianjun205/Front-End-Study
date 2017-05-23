@@ -84,8 +84,7 @@ Array.prototype.unique = function () {
     // })
     //  console.log(res) ;
 
-    //从性能优化角度来考虑，这题用着个方式，一次循环就可以搞定，filter, 和indexof 两次循环了
-
+    
     (function () {
         var i = 0;
         return function () {
