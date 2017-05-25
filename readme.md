@@ -821,174 +821,174 @@
     4. es6
         Front-End-Study/ECMA/es6.md
 ## jquery
-    1. 本质：
-        源码分析得知是一个伪数组对象，在自然数的索引上存储的是查询到所有DOM元素。 $本质是jQuery原型上的init这个工厂构造函数的实例，根据传入的参数不同实现不同的功能。
-    2. 特性：
+  1. 本质：
+      源码分析得知是一个伪数组对象，在自然数的索引上存储的是查询到所有DOM元素。 $本质是jQuery原型上的init这个工厂构造函数的实例，根据传入的参数不同实现不同的功能。
+  2. 特性：
         jquery 有两大特性
             隐式迭代
             链式编程
-    3. jquery 与 dom 对象转化：
-        dom->jquery $() 包裹一个dom对象
-        jquery->dom   
-            1)var $box=$("#box") 通过索引取出$box[0]
-            2)$box.get(0)
-    4. 清空元素
-        1. html():
-            $(“div”).html("");//使用html方法来清空元素，不推荐使用，会造成内存泄漏,绑定的事件不会被清除。
-        2.empty():
-             $(“div”).empty();//清空div的所有内容（推荐使用，会清除子元素上绑定的内容）
-        3. remove():
-             $(“div”).remove();自身也删除   
-    5. attr,prop 区别
-        1. attr("box",值) 设置单个属性
-            attr({})    设置多个属性
-            取表单值属性时会得到undefined
-        2.  这里可以使用prop 
-            自定义属性使用attr,自带属性使用prop
-    6. selecor
-    7. dom 操作的方法
-    8. ajax/jsonp
-        1. ajax :
-            $.ajax({
-                type: "method",
-                url: "url",
-                data: "data",
-                dataType: "dataType",
-                success: function (response) {
-                    
-                }
-            });
-            $.get("url", data,
-                function (data, textStatus, jqXHR) {
-                    
-                },
-                "dataType"
-            );
-            $.post("url", data,
-                function (data, textStatus, jqXHR) {
-                    
-                },
-                "dataType"
-            );
-        2. jsonp:
-            原理：
-                利用了<script src=""></script>标签具有可跨域的特性，
-                由服务端返回一个预先定义好的Javascript函数的调用，并且将服务器数据以该函数参数的形式传递过来
-                只能以GET方式请求
-            $.ajax({
-                //请求方式必须是get
-                type:'get',
-                //请求地址
-                url:'http://api.map.baidu.com/telematics/v3/weather',
-                //请求数据
-                data:{'name':'test'},
-                //请求方式  如果想要实现jsonp跨域，必须声明是dataType:'jsonp'
-                dataType:'jsonp',
-                //成功时的回调
-                success:function(data){
+  3. jquery 与 dom 对象转化：
+      dom->jquery $() 包裹一个dom对象
+      jquery->dom   
+          1)var $box=$("#box") 通过索引取出$box[0]
+          2)$box.get(0)
+  4. 清空元素
+      1. html():
+          $(“div”).html("");//使用html方法来清空元素，不推荐使用，会造成内存泄漏,绑定的事件不会被清除。
+      2.empty():
+           $(“div”).empty();//清空div的所有内容（推荐使用，会清除子元素上绑定的内容）
+      3. remove():
+           $(“div”).remove();自身也删除   
+  5. attr,prop 区别
+      1. attr("box",值) 设置单个属性
+          attr({})    设置多个属性
+          取表单值属性时会得到undefined
+      2.  这里可以使用prop 
+          自定义属性使用attr,自带属性使用prop
+  6. selecor
+  7. dom 操作的方法
+  8. ajax/jsonp
+     1. ajax :
+         $.ajax({
+             type: "method",
+             url: "url",
+             data: "data",
+             dataType: "dataType",
+             success: function (response) {
+                 
+             }
+         });
+         $.get("url", data,
+             function (data, textStatus, jqXHR) {
+                 
+             },
+             "dataType"
+         );
+         $.post("url", data,
+             function (data, textStatus, jqXHR) {
+                 
+               },
+               "dataType"
+           );
+       2. jsonp:
+           原理：
+               利用了<script src=""></script>标签具有可跨域的特性，
+               由服务端返回一个预先定义好的Javascript函数的调用，并且将服务器数据以该函数参数的形式传递过来
+               只能以GET方式请求
+           $.ajax({
+               //请求方式必须是get
+               type:'get',
+               //请求地址
+               url:'http://api.map.baidu.com/telematics/v3/weather',
+               //请求数据
+               data:{'name':'test'},
+               //请求方式  如果想要实现jsonp跨域，必须声明是dataType:'jsonp'
+               dataType:'jsonp',
+               //成功时的回调
+               success:function(data){
 
-                }
-            })
-        3. cors 
-            ajax 的jsonp 有个缺陷就是只能发get 请求不能发post,所以可以使用cors.get/post 都支持
+               }
+           })
+       3. cors 
+           ajax 的jsonp 有个缺陷就是只能发get 请求不能发post,所以可以使用cors.get/post 都支持
 
-            原理：在服务器响应了响应头: Access-Control-Allow-Origin http 协议规定.
-            header("Access-Control-Allow-Origin:*");
-    9. animation
-    10. Event（事件绑定，事件代理，事件委托）
-        1. 事件绑定： 绑定多个事件
-            1)$("#box").bind(""click mouseenter",function(){
-                ...
-            })
-            2)$("#box").bind({
-                "click":function(){
-                    ...
-                },
-                "mouseenter":function(){
-                    ...
-                }
-            })
-            
-        2. 事件委托（或者叫代理）
-            1. 以上bind 绑定事件会出现一个问题及新创建的元素没有事件？
-            2. 如何解决？
-                jq 推出新的事件的添加方式delegate
-                    $("#box").delegate("p","click",function(){
-                        .....
-                    })
-            3. 这就是事件委托或者叫事件代理
-                本质：就是利用事件冒泡的原理，将事件绑定在父容器中，让父容器代为触发
+           原理：在服务器响应了响应头: Access-Control-Allow-Origin http 协议规定.
+           header("Access-Control-Allow-Origin:*");
+   9. animation
+   10. Event（事件绑定，事件代理，事件委托）
+       1. 事件绑定： 绑定多个事件
+           1)$("#box").bind(""click mouseenter",function(){
+               ...
+           })
+           2)$("#box").bind({
+               "click":function(){
+                   ...
+               },
+               "mouseenter":function(){
+                   ...
+               }
+           })
+           
+       2. 事件委托（或者叫代理）
+           1. 以上bind 绑定事件会出现一个问题及新创建的元素没有事件？
+           2. 如何解决？
+               jq 推出新的事件的添加方式delegate
+                   $("#box").delegate("p","click",function(){
+                       .....
+                   })
+           3. 这就是事件委托或者叫事件代理
+               本质：就是利用事件冒泡的原理，将事件绑定在父容器中，让父容器代为触发
 
-            4. 新版本jq 统一使用on(v1.7后)
-                1. 简单事件添加
-                    $("#box").on("click",function(){
-                        ...
-                    })
-                2. 同时添加多个事件
-                    $("#box").on({
-                    "click":function(){
-                        ...
-                    },
-                    "mouseenter":function(){
-                        ...
-                    }
-                })
-                3. 事件委托 一般只添加一次事件委托
-                    $("#box").on("click","p",function(){
-                        .....
-                    })
-                4. 事件委托好处：
-                    提高性能
-                        应用场景：
-                            给dom元素循环遍历绑定事件
-                            1. 减少了事件的注册，内存开销减少了
-                            2. 元素的增减不会影响事件的绑定
-                            3. js和DOM节点之间的关联变少了，减少了因循环引用(GC中引用计数法的缺陷)而带来的内存泄漏发生的概率。
+           4. 新版本jq 统一使用on(v1.7后)
+               1. 简单事件添加
+                   $("#box").on("click",function(){
+                       ...
+                   })
+               2. 同时添加多个事件
+                   $("#box").on({
+                   "click":function(){
+                       ...
+                   },
+                   "mouseenter":function(){
+                       ...
+                   }
+               })
+               3. 事件委托 一般只添加一次事件委托
+                   $("#box").on("click","p",function(){
+                       .....
+                   })
+               4. 事件委托好处：
+                   提高性能
+                       应用场景：
+                           给dom元素循环遍历绑定事件
+                           1. 减少了事件的注册，内存开销减少了
+                           2. 元素的增减不会影响事件的绑定
+                           3. js和DOM节点之间的关联变少了，减少了因循环引用(GC中引用计数法的缺陷)而带来的内存泄漏发生的概率。
 
-                    注意：不是所有的事件都有冒泡（blur、focus、load和unload），所以事件委托不是所有的事件都可以使用。例如mouseover 由于事件对象target 频繁改动会有性能问题
+                   注意：不是所有的事件都有冒泡（blur、focus、load和unload），所以事件委托不是所有的事件都可以使用。例如mouseover 由于事件对象target 频繁改动会有性能问题
 
-                5. 事件流
-                    场景： 一个标签添加了自身的事件，又添加了委托事件执行顺序？
-                        委托事件先执行，然后自身事件执行（冒泡）
-                    执行的流程：
-                        以这个为例： 
-                         $("#box").on("p","click",function(){
-                            .....
-                        })
-                         $("p").on("click",function(){
-                        ...
-                    })
+               5. 事件流
+                   场景： 一个标签添加了自身的事件，又添加了委托事件执行顺序？
+                       委托事件先执行，然后自身事件执行（冒泡）
+                   执行的流程：
+                       以这个为例： 
+                        $("#box").on("p","click",function(){
+                           .....
+                       })
+                        $("p").on("click",function(){
+                       ...
+                   })
 
-                    未完待续
+                   未完待续
 
 
 
-                6. 解绑事件：
-                    1）解绑普通事件
-                        $("#box").off("click")
-                    2)解绑多个
-                        $("#box").off("mouseenter click")
-                    3)解绑委托事件
-                        $("#box").off("click","**")
-                    4）$("#box").off() //接除box盒子所有的事件
-                  
-                7. 事件触发:
-                    1. 简单事件触发：
-                        $(selector).click(); //触发 click事件
-                    2. trigger方法触发事件
-                        $(selector).trigger(“click”);
-                    3. triggerHandler触发 事件响应方法，不触发浏览器行为
-                        $(selector).triggerHandler(“focus”);
+               6. 解绑事件：
+                   1）解绑普通事件
+                       $("#box").off("click")
+                   2)解绑多个
+                       $("#box").off("mouseenter click")
+                   3)解绑委托事件
+                       $("#box").off("click","**")
+                   4）$("#box").off() //接除box盒子所有的事件
+                 
+               7. 事件触发:
+                   1. 简单事件触发：
+                       $(selector).click(); //触发 click事件
+                   2. trigger方法触发事件
+                       $(selector).trigger(“click”);
+                   3. triggerHandler触发 事件响应方法，不触发浏览器行为
+                       $(selector).triggerHandler(“focus”);
 
-                8. jq中阻止事件冒泡：
-                    1，阻止事件传播
-                        e.stopPropagation();   
-                    2，阻止事件触发的默认效果
-                        e.preventDefault();
-                    3，return false 不仅可以阻止默认效果，还能阻止事件冒泡
+               8. jq中阻止事件冒泡：
+                   1，阻止事件传播
+                       e.stopPropagation();   
+                   2，阻止事件触发的默认效果
+                       e.preventDefault();
+                   3，return false 不仅可以阻止默认效果，还能阻止事件冒泡
 
-                ___更详细的后面会写一篇博客关于事件这块。
-    11. 插件开发
+               ___更详细的后面会写一篇博客关于事件这块。
+   11. 插件开发
 
 
 ## framework
@@ -1160,7 +1160,7 @@
   3. gulp
         Front-End-Study/build-tool/gulp
   4. webpack 结合 babel 使用
-            Project/Front-End-Study/webpack-babel
+        Project/Front-End-Study/webpack-babel
   5. Emmet 语法
         div.className
         div#idName

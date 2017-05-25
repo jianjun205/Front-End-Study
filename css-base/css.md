@@ -4,8 +4,8 @@
 
     offsetLeft
     offsetTop 
-    offsetWidth //除了margin
-    OffsetHeight//除了margin以外所有的高度
+    offsetWidth  //除了margin
+    OffsetHeight //除了margin以外所有的高度
     OffsetParent //获取到当前元素外面的定位父盒子
 
 
