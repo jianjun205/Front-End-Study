@@ -87,63 +87,63 @@
         }
         // drawAxises(padding, arrowHeight, arrowWidth);
 
-        //5,绘制折线图
-        var points = [[50, 100], [10, 800], [150, 300], [400, 200], [800, 1000]];
-        // 绘制点
-        function drawPoints(points, pointSize) {
-            var x, y; // 用来存储点坐标
-            var x0 = padding,
-                y0 = h - padding;
+        // //5,绘制折线图
+        // var points = [[50, 100], [10, 800], [150, 300], [400, 200], [800, 1000]];
+        // // 绘制点
+        // function drawPoints(points, pointSize) {
+        //     var x, y; // 用来存储点坐标
+        //     var x0 = padding,
+        //         y0 = h - padding;
 
-            // 按照x坐标给points排序（升）
-            points.sort(function (a, b) {
-                return a[0] - b[0];
-            });
+        //     // 按照x坐标给points排序（升）
+        //     points.sort(function (a, b) {
+        //         return a[0] - b[0];
+        //     });
 
-            // 获取坐标轴的有效长度
-            var xLength = w - 2 * padding - arrowHeight,
-                yLength = h - 2 * padding - arrowHeight;
+        //     // 获取坐标轴的有效长度
+        //     var xLength = w - 2 * padding - arrowHeight,
+        //         yLength = h - 2 * padding - arrowHeight;
 
-            // 获取到所有点中x，y坐标最大值
-            var xMax = Math.max.apply(null, points.map(function (v) {
-                return v[0];
-            })),
-                yMax = Math.max.apply(null, points.map(function (v) {
-                    return v[1];
-                }));
-            // 存储变换后的所有点
-            var renderPoints = [];
-            points.forEach(function (point) {
-                x = point[0];
-                y = point[1];
-                // 点坐标缩放
-                x = xLength * x / xMax;
-                y = yLength * y / yMax;
-                // 坐标系变换
-                x = x0 + x;
-                y = y0 - y;
-                // 将变换后的坐标点，存储起来
-                renderPoints.push([x, y]);
-                ctx.beginPath();
-                ctx.arc(x, y, pointSize, 0, 2 * Math.PI);
-                ctx.fill();
-            });
+        //     // 获取到所有点中x，y坐标最大值
+        //     var xMax = Math.max.apply(null, points.map(function (v) {
+        //         return v[0];
+        //     })),
+        //         yMax = Math.max.apply(null, points.map(function (v) {
+        //             return v[1];
+        //         }));
+        //     // 存储变换后的所有点
+        //     var renderPoints = [];
+        //     points.forEach(function (point) {
+        //         x = point[0];
+        //         y = point[1];
+        //         // 点坐标缩放
+        //         x = xLength * x / xMax;
+        //         y = yLength * y / yMax;
+        //         // 坐标系变换
+        //         x = x0 + x;
+        //         y = y0 - y;
+        //         // 将变换后的坐标点，存储起来
+        //         renderPoints.push([x, y]);
+        //         ctx.beginPath();
+        //         ctx.arc(x, y, pointSize, 0, 2 * Math.PI);
+        //         ctx.fill();
+        //     });
 
-            return renderPoints;
-        }
-        // 绘制折线
-        function drawLines(points) {
-            var renderPoints = drawPoints(points, 4);
-            ctx.beginPath();
-            ctx.moveTo(renderPoints[0][0], renderPoints[0][1]);
-            renderPoints.forEach(function (point, i) {
-                if (i > 0) {
-                    ctx.lineTo(point[0], point[1]);
-                }
-            });
-            ctx.stroke();
-        }
-         drawLines(points)
+        //     return renderPoints;
+        // }
+        // // 绘制折线
+        // function drawLines(points) {
+        //     var renderPoints = drawPoints(points, 4);
+        //     ctx.beginPath();
+        //     ctx.moveTo(renderPoints[0][0], renderPoints[0][1]);
+        //     renderPoints.forEach(function (point, i) {
+        //         if (i > 0) {
+        //             ctx.lineTo(point[0], point[1]);
+        //         }
+        //     });
+        //     ctx.stroke();
+        // }
+        //  drawLines(points)
     </script>
 </body>
 

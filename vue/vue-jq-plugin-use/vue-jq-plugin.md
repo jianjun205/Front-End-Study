@@ -1,4 +1,4 @@
-# vue中如何结合常用jq插件的使用
+# vue中如何结合常用插件的使用
 1. 移动端click屏幕产生200-300 ms的延迟响应（fastclick）
 ```javascript
     import FastClick from 'fastclick'
